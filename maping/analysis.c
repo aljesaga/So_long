@@ -6,11 +6,11 @@
 /*   By: alsanche <alsanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 16:24:37 by alsanche          #+#    #+#             */
-/*   Updated: 2022/02/06 19:24:56 by alsanche         ###   ########.fr       */
+/*   Updated: 2022/02/21 17:34:10 by alsanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "maping.h"
 
 int type(char *arv)
 {

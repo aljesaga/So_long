@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   mapinig.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alsanche <alsanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/06 17:38:23 by alsanche          #+#    #+#             */
-/*   Updated: 2022/02/21 17:50:11 by alsanche         ###   ########.fr       */
+/*   Created: 2022/02/21 17:26:59 by alsanche          #+#    #+#             */
+/*   Updated: 2022/02/21 17:35:25 by alsanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	SO_LONG_H
+#ifndef MAPING_H
+# define MAPING_H
 
-# define SO_LONG_H
-
-# include "../Libft/libft.h"
-# include "mlx.h"
-# include <stdio.h>
+# include "../../Libft/libft.h"
+# include <mlx.h>
 # include <unistd.h>
-
-typedef struct game_struct
-{
-    int     high;
-    int     width;
-    int     player_x;
-    int     player_y;
-    int     all_points;
-    int     points;
-    int     exit_x;
-    int     exit_y;
-
-};
+# include <stdio.h>
 
 
-/* so_long */
+/* prints */
 
-int		main(int arc, char **arv);
+void	send_error(int line, int point, int action);
+
+/* analysis */
+
+int		type(char *arv);
+void	plus_values(int action, char x, int *values);
+void	other_line(char *str, int line, int length, int *values);
+int		error_map(char *str, int check, int *values, int end);
+int		analysis(int fd, char *map, int end);
 
 #endif
