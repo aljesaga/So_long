@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsanche <alsanche@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alsanche <alsanche@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 16:22:24 by alsanche          #+#    #+#             */
-/*   Updated: 2022/02/22 18:03:38 by alsanche         ###   ########.fr       */
+/*   Updated: 2022/02/23 17:31:16 by alsanche         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 void	load_map(int fd, t_game_struct **map, void *mlx)
 {
-	
 }
 
 int	main(int arc, char **arv)
 {
 	int				fd;
 	void			*mlx;
-	t_game_struct	**game_map;
+	t_game_struct	*game_map;
 
 	if (arc == 2)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prints.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsanche <alsanche@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alsanche <alsanche@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:42:04 by alsanche          #+#    #+#             */
-/*   Updated: 2022/02/22 18:44:26 by alsanche         ###   ########.fr       */
+/*   Updated: 2022/02/23 17:26:07 by alsanche         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	send_error(int line, int point, int action)
 
 int	height(char *arv)
 {
-	int fd2;
-	int end;
-	char *str;
+	int		fd2;
+	int		end;
+	char	*str;
 
 	fd2 = open(arv);
 	str = get_next_line(fd2);

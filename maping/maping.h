@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   maping.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsanche <alsanche@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alsanche <alsanche@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 17:26:59 by alsanche          #+#    #+#             */
-/*   Updated: 2022/02/22 17:39:35 by alsanche         ###   ########.fr       */
+/*   Updated: 2022/02/23 17:31:32 by alsanche         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,17 @@
 # include <unistd.h>
 # include <stdio.h>
 
-
 /* prints */
 
 void	send_error(int line, int point, int action);
-int 	height(int fd);
+int		height(char *arv);
 
 /* analysis */
 
-int	    	        type(char *arv);
-void	            plus_values(int action, char x, int *values);
-void	            other_line(char *str, int line, int length, int *values);
-int		            error_map(char *str, int check, int *values, int end);
-t_game_struct		analysis(int fd, char *map);
+int		type(char *arv);
+void	plus_values(int x, int y, char k, t_game_struct *map);
+void	other_line(char *str, int line, int length, t_game_struct *map);
+void	error_map(char *str, int check, int end, t_game_struct *map);
+void	analysis(int fd, t_game_struct *game_map, int end);
 
 #endif
