@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   prints.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsanche <alsanche@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alsanche <alsanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:42:04 by alsanche          #+#    #+#             */
-/*   Updated: 2022/02/23 17:26:07 by alsanche         ###   ########lyon.fr   */
+/*   Updated: 2022/03/04 12:25:23 by alsanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "maping.h"
+#include "../so_long.h"
 
 void	send_error(int line, int point, int action)
 {

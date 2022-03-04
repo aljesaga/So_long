@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   analysis.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsanche <alsanche@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alsanche <alsanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 16:24:37 by alsanche          #+#    #+#             */
-/*   Updated: 2022/02/23 17:25:50 by alsanche         ###   ########lyon.fr   */
+/*   Updated: 2022/03/04 12:34:30 by alsanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "maping.h"
+#include "../so_long.h"
 
-int	type(char *arv)
+int	get_type(char *arv)
 {
 	int	i;
 
@@ -35,7 +35,7 @@ void	plus_values(int x, int y, char k, t_game_struct *map)
 	if (k == 'P')
 	{
 		if (map->player == 1)
-			send_error(action, action, 3);
+			send_error(x, y, 3);
 		map->player = 1;
 		map->player_x = x;
 		map->player_y = y;
@@ -43,7 +43,7 @@ void	plus_values(int x, int y, char k, t_game_struct *map)
 	if (k == 'E')
 	{
 		if (map->exit == 1)
-			send_error(action, action, 4);
+			send_error(x, y, 4);
 		map->exit = 1;
 		map->exit_x = x;
 		map->exit_y = y;
@@ -58,7 +58,7 @@ void	other_line(char *str, int line, int length, t_game_struct *map)
 
 	p = -1;
 	if (line == 1)
-		plus_values(0, 'x', map);
+		plus_values(0, 0, 'x', map);
 	while (str[++p] != '\0')
 	{
 		if (str[0] != 1)
@@ -88,7 +88,7 @@ void	error_map(char *str, int check, int end, t_game_struct *map)
 				sent_error(check, point, 1);
 		}
 		if (check == end)
-			if (length != point)
+			if (map->width != point)
 				send_error(check, point, 2);
 		map->width = point;
 		if (map->width == end)
@@ -111,12 +111,12 @@ void	analysis(int fd, t_game_struct *game_map, int end)
 	while (++line < end)
 	{
 		map->reading[line] = get_next_line(fd);
-		error_map(map->reading[line], line, end);
+		error_map(map->reading[line], line, end, map);
 	}
 	if (map->player < 1)
-		send_error(time, end, 5);
+		send_error(line, end, 5);
 	if (map->exit < 1)
-		send_error(time, end, 6);
+		send_error(line, end, 6);
 	if (map->all_points < 1)
-		send_error(time, end, 7);
+		send_error(line, end, 7);
 }
