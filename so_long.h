@@ -6,7 +6,7 @@
 /*   By: alsanche <alsanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 17:38:23 by alsanche          #+#    #+#             */
-/*   Updated: 2022/03/04 12:24:14 by alsanche         ###   ########.fr       */
+/*   Updated: 2022/03/08 17:52:13 by alsanche         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,74 @@
 # include <stdio.h>
 # include <unistd.h>
 
+typedef struct s_vtr
+{
+	int	x;
+	int	y;
+
+}	t_vtr;
+
 typedef struct s_game_struct
 {
+	char	**reading;
+	t_vtr	*p_place
+	t_vtr	*e_place;
 	int		high;
 	int		width;
-	int		player_x;
-	int		player_y;
 	int		all_points;
-	char	**reading;
 	int		points;
-	int		exit_x;
-	int		exit_y;
 	int		player;
 	int		exit;
 
 }	t_game_struct;
 
+typedef struct s_img
+{
+	void	*img;
+	char	*px;
+	t_vtr	*size
+	int		b_px;
+	int		line_size;
+	int		endian;
+
+}	t_img;
+
+
+typedef struct s_mlx_need
+{
+	void	*mlx;
+	void	*mlx_win;
+	t_img	*img_player;
+	t_img	*img_wall;
+	t_img	*img_back;
+	t_img	*img_exit;
+	t_img	*img_coll;
+	int		all_points;
+	int		points;
+
+}	t_mlx_need;
+
+
 /* so_long */
 
+void	load_map(int fd, t_game_struct *map, t_mlx_need *mlx_all);
 void	ft_free_lts(t_game_struct *map);
 int		main(int arc, char **arv);
+
+/* ipu.c */
+
+t_img	ft_new_img(void *mlx, int width, int height);
+t_img	ft_new_sprite(void *mlx, char *route);
+void	ft_add_arts(t_mlx_need *mlx_st, t_game_struct *map);
+
+/* keys_move */
+/* wasd */
+
+void	W_key(t_game_struct *map, void *mlx);
+void	S_key(t_game_struct *map, void *mlx);
+void	A_key(t_game_struct *map, void *mlx);
+void	D_key(t_game_struct *map, void *mlx);
+void	ft_end_map(t_game_struct *map, void *mlx);
 
 /* maping */
 /* prints */
@@ -51,5 +99,5 @@ int		get_type(char *arv);
 void	plus_values(int x, int y, char k, t_game_struct *map);
 void	other_line(char *str, int line, int length, t_game_struct *map);
 void	error_map(char *str, int check, int end, t_game_struct *map);
-void	analysis(int fd, t_game_struct *game_map, int end);
+void	analysis(int fd, t_game_struct *map, int end);
 #endif

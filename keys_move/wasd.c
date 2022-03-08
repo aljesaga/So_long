@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   wasd.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alsanche <alsanche@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/08 17:46:34 by alsanche          #+#    #+#             */
+/*   Updated: 2022/03/08 17:48:03 by alsanche         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include	"../so_long.h"
 
 void	W_key(t_game_struct *map, void *mlx)
@@ -112,7 +124,7 @@ void	D_key(t_game_struct *map, void *mlx)
 	}
 }
 
-ft_end_map(t_game_struct *map, void *mlx)
+void	ft_end_map(t_game_struct *map, void *mlx)
 {
 	ft_free_lst(map);
 	free(mlx);

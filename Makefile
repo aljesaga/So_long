@@ -8,13 +8,15 @@ CC = gcc
 
 DFLAGS = -fsantize=address -g3
 
+MLBFLAGS = -lmlx -framework OpenGL -framework AppKit
+
 WFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -sC ../Libft
-	$(CC) $^ -o $@ $(CFLAGS) $(DFLAGS) ../Libft/libft.a
+	$(CC) $^ -o $@ $(CFLAGS) $(MLBFLAGS) $(DFLAGS) ../Libft/libft.a
 
 clean:
 	make fclean -sC ../Libft

@@ -6,7 +6,7 @@
 /*   By: alsanche <alsanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 16:24:37 by alsanche          #+#    #+#             */
-/*   Updated: 2022/03/04 12:34:30 by alsanche         ###   ########.fr       */
+/*   Updated: 2022/03/08 13:31:27 by alsanche         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ void	plus_values(int x, int y, char k, t_game_struct *map)
 		if (map->player == 1)
 			send_error(x, y, 3);
 		map->player = 1;
-		map->player_x = x;
-		map->player_y = y;
+		map->p_place->x = x;
+		map->p_place->y = y;
 	}
 	if (k == 'E')
 	{
 		if (map->exit == 1)
 			send_error(x, y, 4);
 		map->exit = 1;
-		map->exit_x = x;
-		map->exit_y = y;
+		map->e_place->x = x;
+		map->e_place->y = y;
 	}
 	if (k == 'C')
 		map->all_points++;
@@ -98,13 +98,11 @@ void	error_map(char *str, int check, int end, t_game_struct *map)
 		other_line(str, check, map->width, map);
 }
 
-void	analysis(int fd, t_game_struct *game_map, int end)
+void	analysis(int fd, t_game_struct *map, int end)
 {
-	t_game_struct	*map;
 	int				line;
 
 	line = -1;
-	map = game_map;
 	map->reading = malloc(sizeof(char *) * end + 1);
 	if (!map->reading)
 		send_error(line, end, 0);
