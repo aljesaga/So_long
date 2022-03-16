@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   analysis.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsanche <alsanche@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alsanche <alsanche@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 16:24:37 by alsanche          #+#    #+#             */
-/*   Updated: 2022/03/08 13:31:27 by alsanche         ###   ########lyon.fr   */
+/*   Updated: 2022/03/16 19:07:27 by alsanche         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,13 @@ int	get_type(char *arv)
 	int	i;
 
 	i = 0;
-	while (arv[i] != '.' || arv[i])
+	while (arv[i] != '\0')
+	{
+		if (arv[i] == '.')
+			if (arv[i + 1] == 'b' && arv[i + 2] == 'e' && arv[i + 3] == 'r')
+				return (1);
 		i++;
-	if (arv[i +1] == 'b' && arv[i + 2] == 'e' && arv[i + 3] == 'r')
-		return (1);
+	}
 	return (0);
 }
 
@@ -36,19 +39,19 @@ void	plus_values(int x, int y, char k, t_game_struct *map)
 	{
 		if (map->player == 1)
 			send_error(x, y, 3);
-		map->player = 1;
-		map->p_place->x = x;
-		map->p_place->y = y;
+		map->player++;
+		map->p_place.x = x;
+		map->p_place.y = y;
 	}
-	if (k == 'E')
+	else if (k == 'E')
 	{
 		if (map->exit == 1)
 			send_error(x, y, 4);
-		map->exit = 1;
-		map->e_place->x = x;
-		map->e_place->y = y;
+		map->exit++;
+		map->e_place.x = x;
+		map->e_place.y = y;
 	}
-	if (k == 'C')
+	else if (k == 'C')
 		map->all_points++;
 }
 
@@ -56,20 +59,21 @@ void	other_line(char *str, int line, int length, t_game_struct *map)
 {
 	int	p;
 
-	p = -1;
+	p = 0;
 	if (line == 1)
 		plus_values(0, 0, 'x', map);
-	while (str[++p] != '\0')
+	while (str[p + 1] != '\0')
 	{
-		if (str[0] != 1)
+		if (str[0] != '1')
 			send_error(line, p, 1);
-		else if (str[p] != 1 && str[p] != 0 && str[p] != 'P'
+		else if (str[p] != '1' && str[p] != '0' && str[p] != 'P'
 			&& str[p] != 'E' && str[p] != 'C')
 			send_error(line, p, 9);
 		else if (str[p] == 'P' || str[p] == 'E' || str[p] == 'C')
 			plus_values(p, line, str[p], map);
+		p++;
 	}
-	if (str[p] != 1)
+	if (str[p - 1] != '1')
 		send_error(line, p, 1);
 	if (p != length)
 		send_error(line, p, 2);
@@ -79,19 +83,20 @@ void	error_map(char *str, int check, int end, t_game_struct *map)
 {
 	int			point;
 
-	if (check == 0 || check == end)
+	if (check == 0 || check == end - 1)
 	{
-		point = -1;
-		while (str[++point] != '\0')
+		point = 0;
+		while (str[point + 1] != '\0')
 		{
-			if (str[point] != 1)
-				sent_error(check, point, 1);
+			if (str[point] != '1')
+				send_error(check, point, 1);
+			point++;
 		}
-		if (check == end)
-			if (map->width != point)
+		if (check == end - 1)
+			if (point + 1 != map->width)
 				send_error(check, point, 2);
 		map->width = point;
-		if (map->width == end)
+		if (map->width == end - 1)
 			send_error(check, point, 8);
 	}
 	else

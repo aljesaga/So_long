@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsanche <alsanche@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alsanche <alsanche@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 17:38:23 by alsanche          #+#    #+#             */
-/*   Updated: 2022/03/08 17:52:13 by alsanche         ###   ########lyon.fr   */
+/*   Updated: 2022/03/16 19:27:04 by alsanche         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 # define SO_LONG_H
 
 # include "../Libft/libft.h"
-# include "./minilibx-linux/mlx.h"
+# include "./gnl/get_next_line.h"
+# include <mlx.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 # include <stdio.h>
 # include <unistd.h>
 
@@ -28,8 +32,8 @@ typedef struct s_vtr
 typedef struct s_game_struct
 {
 	char	**reading;
-	t_vtr	*p_place
-	t_vtr	*e_place;
+	t_vtr	p_place;
+	t_vtr	e_place;
 	int		high;
 	int		width;
 	int		all_points;
@@ -43,38 +47,36 @@ typedef struct s_img
 {
 	void	*img;
 	char	*px;
-	t_vtr	*size
+	t_vtr	size;
 	int		b_px;
 	int		line_size;
 	int		endian;
 
 }	t_img;
 
-
 typedef struct s_mlx_need
 {
 	void	*mlx;
 	void	*mlx_win;
-	t_img	*img_player;
-	t_img	*img_wall;
-	t_img	*img_back;
-	t_img	*img_exit;
-	t_img	*img_coll;
+	t_img	img_player;
+	t_img	img_wall;
+	t_img	img_back;
+	t_img	img_exit;
+	t_img	img_coll;
 	int		all_points;
 	int		points;
 
 }	t_mlx_need;
 
-
 /* so_long */
 
 void	load_map(int fd, t_game_struct *map, t_mlx_need *mlx_all);
-void	ft_free_lts(t_game_struct *map);
+void	ft_free_lts(t_game_struct *map, int check);
 int		main(int arc, char **arv);
 
 /* ipu.c */
 
-t_img	ft_new_img(void *mlx, int width, int height);
+t_img	*ft_new_img(void *mlx, int width, int height);
 t_img	ft_new_sprite(void *mlx, char *route);
 void	ft_add_arts(t_mlx_need *mlx_st, t_game_struct *map);
 

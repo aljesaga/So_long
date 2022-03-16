@@ -1,22 +1,24 @@
 NAME = so_long
 
-SRC = so_long.c so_long.h ./maping/prints.c ./maping/analisys.c
+SRC = so_long.c ./maping/prints.c ./maping/analysis.c \
+	ipu.c ./keys_move/wasd.c ./gnl/get_next_line.c \
+	./gnl/get_next_line_utils.c 
 
 OBJS = $(SRC:%.c=%.o)
 
 CC = gcc
 
-DFLAGS = -fsantize=address -g3
+DFLAGS = -fsanitize=address
 
 MLBFLAGS = -lmlx -framework OpenGL -framework AppKit
 
-WFLAGS = -Wall -Wextra -Werror
+WFLAGS = -Wall -Wextra -Werror -g3
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	make -sC ../Libft
-	$(CC) $^ -o $@ $(CFLAGS) $(MLBFLAGS) $(DFLAGS) ../Libft/libft.a
+	make -C ../Libft
+	$(CC) $^ -o $@ $(CFLAGS) $(DFLAGS) ../Libft/libft.a $(MLBFLAGS)
 
 clean:
 	make fclean -sC ../Libft
