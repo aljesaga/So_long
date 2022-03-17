@@ -6,7 +6,7 @@
 /*   By: alsanche <alsanche@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 17:38:23 by alsanche          #+#    #+#             */
-/*   Updated: 2022/03/16 19:27:04 by alsanche         ###   ########lyon.fr   */
+/*   Updated: 2022/03/17 15:34:10 by alsanche         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,42 +56,65 @@ typedef struct s_img
 
 typedef struct s_mlx_need
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_img	img_player;
-	t_img	img_wall;
-	t_img	img_back;
-	t_img	img_exit;
-	t_img	img_coll;
-	int		all_points;
-	int		points;
+	void			*mlx;
+	void			*mlx_win;
+	t_img			img_player;
+	t_img			img_wall;
+	t_img			img_back;
+	t_img			img_exit;
+	t_img			img_coll;
+	int				all_points;
+	int				points;
+	t_game_struct	*map;
 
 }	t_mlx_need;
+
+/* Keys_code */
+/*
+	W = 13
+	S = 1
+	A = 0
+	D = 2
+	R = 15
+	esc = 53
+*/
 
 /* so_long */
 
 void	load_map(int fd, t_game_struct *map, t_mlx_need *mlx_all);
-void	ft_free_lts(t_game_struct *map, int check);
 int		main(int arc, char **arv);
 
-/* ipu.c */
+/* ipu */
 
-t_img	*ft_new_img(void *mlx, int width, int height);
 t_img	ft_new_sprite(void *mlx, char *route);
+void	ft_charge_arts(t_mlx_need *mlx_a);
+void	ft_put_pec(t_mlx_need *mlx_st, int y, int x, char c);
 void	ft_add_arts(t_mlx_need *mlx_st, t_game_struct *map);
 
+/* ft_free */
+
+void	ft_free_img(t_img img_st);
+void	ft_free_mlx(t_mlx_need *mlx_st);
+void	ft_free_map(t_game_struct *map);
+
 /* keys_move */
+/* hooks */
+
+int		call_of_hooks(int key, t_mlx_need *mlx_st);
+void	what_if(t_mlx_need *mlx_st);
+
 /* wasd */
 
-void	W_key(t_game_struct *map, void *mlx);
-void	S_key(t_game_struct *map, void *mlx);
-void	A_key(t_game_struct *map, void *mlx);
-void	D_key(t_game_struct *map, void *mlx);
-void	ft_end_map(t_game_struct *map, void *mlx);
+int		w_key(t_mlx_need *mlx);
+int		s_key(t_mlx_need *mlx);
+int		a_key(t_mlx_need *mlx);
+int		d_key(t_mlx_need *mlx);
+int		ft_end_game(t_mlx_need *mlx);
 
 /* maping */
 /* prints */
 
+void	print_move(int x, int y, int check, t_mlx_need *mlx_st);
 void	send_error(int line, int point, int action);
 int		height(char *arv);
 

@@ -6,127 +6,119 @@
 /*   By: alsanche <alsanche@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 17:46:34 by alsanche          #+#    #+#             */
-/*   Updated: 2022/03/15 11:31:28 by alsanche         ###   ########lyon.fr   */
+/*   Updated: 2022/03/17 15:57:44 by alsanche         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"../so_long.h"
 
-void	w_key(t_game_struct *map, void *mlx)
+int	w_key(t_mlx_need *mlx_st)
 {
-	int	y;
-	int	x;
+	t_vtr	p;
 
-	y = map->p_place->y;
-	x = map->p_place->x;
-	if (y - 1 != 0)
+	p.y = mlx_st->map->p_place.y;
+	p.x = mlx_st->map->p_place.x;
+	if (mlx_st->map->reading[p.y - 1][p.x] != '1')
 	{
-		if (map->reading[y - 1][x] != '1' && map->reading[y - 1][x] == 'C')
+		if (mlx_st->map->reading[p.y - 1][p.x] == 'C')
 		{
-			map->reading[y - 1][x] = 'P';
-			map->reading[y][x] = '0';
-			map->p_place->y--;
-			map->points++;
+			mlx_put_image_to_window(mlx_st->mlx, mlx_st->mlx_win,
+				mlx_st->img_back.img, p.x * 32, (p.y - 1) * 32);
+			print_move(p.x, p.y - 1, 1, mlx_st);
+			mlx_st->map->reading[p.y - 1][p.x] = '0';
+			mlx_st->map->points++;
 		}
-		else if (map->reading[y - 1][x] != 1)
-		{
-			map->reading[y - 1][x] = 'P';
-			map->reading[y][x] = '0';
-			map->p_place->y--;
-		}
-		if (map->reading[y - 1][x] == 'E')
-			if (map->points == map->all_points)
-				ft_end_map(map, mlx);
+		else if (mlx_st->map->reading[p.y - 1][p.x] == 'E')
+			if (mlx_st->map->points == mlx_st->map->all_points)
+				ft_end_game(mlx_st);
+		else
+			print_move(p.x, p.y - 1, 1, mlx_st);
+		return (1);
 	}
+	return (0);
 }
 
-void	s_key(t_game_struct *map, void *mlx)
+int	s_key(t_mlx_need *mlx_st)
 {
-	int	y;
-	int	x;
+	t_vtr	p;
 
-	y = map->p_place->y;
-	x = map->p_place->x;
-	if (y + 1 != 0)
+	p.y = mlx_st->map->p_place.y;
+	p.x = mlx_st->map->p_place.x;
+	if (mlx_st->map->reading[p.y + 1][p.x] != '1')
 	{
-		if (map->reading[y + 1][x] != '1' && map->reading[y + 1][x] == 'C')
+		if (mlx_st->map->reading[p.y + 1][p.x] == 'C')
 		{
-			map->reading[y + 1][x] = 'P';
-			map->reading[y][x] = '0';
-			map->p_place->y++;
-			map->points++;
+			mlx_put_image_to_window(mlx_st->mlx, mlx_st->mlx_win,
+				mlx_st->img_back.img, p.x * 32, (p.y + 1) * 32);
+			print_move(p.x, p.y + 1, 3, mlx_st);
+			mlx_st->map->reading[p.y + 1][p.x] = '0';
+			mlx_st->map->points++;
 		}
-		else if (map->reading[y + 1][x] != '1')
-		{
-			map->reading[y + 1][x] = 'P';
-			map->reading[y][x] = '0';
-			map->p_place->y++;
-		}
-		if (map->reading[y + 1][x] == 'E')
-			if (map->points == map->all_points)
-				ft_end_map(map, mlx);
+		else if (mlx_st->map->reading[p.y + 1][p.x] == 'E')
+			if (mlx_st->map->points == mlx_st->map->all_points)
+				ft_end_game(mlx_st);
+		else
+			print_move(p.x, p.y - 1, 3, mlx_st);
+		return (1);
 	}
+	return (0);
 }
 
-void	a_key(t_game_struct *map, void *mlx)
+int	a_key(t_mlx_need *mlx_st)
 {
-	int	y;
-	int	x;
+	t_vtr	p;
 
-	y = map->p_place->y;
-	x = map->p_place->x;
-	if (x - 1 != 0)
+	p.y = mlx_st->map->p_place.y;
+	p.x = mlx_st->map->p_place.x;
+	if (mlx_st->map->reading[p.y][p.x - 1] != '1')
 	{
-		if (map->reading[y][x - 1] != '1' && map->reading[y][x - 1] == 'C')
+		if (mlx_st->map->reading[p.y][p.x - 1] == 'C')
 		{
-			map->reading[y][x - 1] = 'P';
-			map->reading[y][x] = '0';
-			map->p_place->x--;
-			map->points++;
+			mlx_put_image_to_window(mlx_st->mlx, mlx_st->mlx_win,
+				mlx_st->img_back.img, (p.x - 1) * 32, p.y * 32);
+			print_move(p.x - 1, p.y, 0, mlx_st);
+			mlx_st->map->reading[p.y][p.x - 1] = '0';
+			mlx_st->map->points++;
 		}
-		else if (map->reading[y][x - 1] != '1')
-		{
-			map->reading[y][x - 1] = 'P';
-			map->reading[y][x] = '0';
-			map->p_place->x--;
-		}
-		if (map->reading[y][x - 1] == 'E')
-			if (map->points == map->all_points)
-				ft_end_map(map, mlx);
+		else if (mlx_st->map->reading[p.y][p.x - 1] == 'E')
+			if (mlx_st->map->points == mlx_st->map->all_points)
+				ft_end_game(mlx_st);
+		else
+			print_move(p.x - 1, p.y, 0, mlx_st);
+		return (1);
 	}
+	return (0);
 }
 
-void	d_key(t_game_struct *map, void *mlx)
+int	d_key(t_mlx_need *mlx_st)
 {
-	int	y;
-	int	x;
+	t_vtr	p;
 
-	y = map->p_place->y;
-	x = map->p_place->x;
-	if (x + 1 != 0)
+	p.y = mlx_st->map->p_place.y;
+	p.x = mlx_st->map->p_place.x;
+	if (mlx_st->map->reading[p.y][p.x + 1] != '1')
 	{
-		if (map->reading[y][x + 1] != '1' && map->reading[y][x + 1] == 'C')
+		if (mlx_st->map->reading[p.y][p.x + 1] == 'C')
 		{
-			map->reading[y][x + 1] = 'P';
-			map->reading[y][x] = '0';
-			map->p_place->x++;
-			map->points++;
+			mlx_put_image_to_window(mlx_st->mlx, mlx_st->mlx_win,
+				mlx_st->img_back.img, (p.x + 1) * 32, p.y * 32);
+			print_move(p.x + 1, p.y, 2, mlx_st);
+			mlx_st->map->reading[p.y][p.x + 1] = '0';
+			mlx_st->map->points++;
 		}
-		else if (map->reading[y][x + 1] != '1')
-		{
-			map->reading[y][x + 1] = 'P';
-			map->reading[y][x] = '0';
-			map->p_place->x++;
-		}
-		if (map->reading[y][x + 1] == 'E')
-			if (map->points == map->all_points)
-				ft_end_map(map, mlx);
+		else if (mlx_st->map->reading[p.y][p.x - 1] == 'E')
+			if (mlx_st->map->points == mlx_st->map->all_points)
+				ft_end_game(mlx_st);
+		else
+			print_move(p.x + 1, p.y, 2, mlx_st);
+		return (1);
 	}
+	return (0);
 }
 
-void	ft_end_map(t_game_struct *map, void *mlx)
+int	ft_end_game(t_mlx_need *mlx_st)
 {
-	ft_free_lts(map);
-	free(mlx);
+	mlx_destroy_window(mlx_st->mlx, mlx_st->mlx_win);
 	exit (0);
+	return (0);
 }

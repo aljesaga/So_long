@@ -6,11 +6,29 @@
 /*   By: alsanche <alsanche@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:42:04 by alsanche          #+#    #+#             */
-/*   Updated: 2022/03/16 17:04:43 by alsanche         ###   ########lyon.fr   */
+/*   Updated: 2022/03/17 15:13:42 by alsanche         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	print_move(int x, int y, int check, t_mlx_need *mlx_st)
+{
+	if (check == 0)
+		mlx_put_image_to_window(mlx_st->mlx, mlx_st->mlx_win,
+			mlx_st->img_back.img, (x + 1) * 32, y * 32);
+	else if (check == 1)
+		mlx_put_image_to_window(mlx_st->mlx, mlx_st->mlx_win,
+			mlx_st->img_back.img, x * 32, (y + 1) * 32);
+	else if (check == 2)
+		mlx_put_image_to_window(mlx_st->mlx, mlx_st->mlx_win,
+			mlx_st->img_back.img, (x - 1) * 32, y * 32);
+	else if (check == 3)
+		mlx_put_image_to_window(mlx_st->mlx, mlx_st->mlx_win,
+			mlx_st->img_back.img, x * 32, (y - 1) * 32);
+	mlx_put_image_to_window(mlx_st->mlx, mlx_st->mlx_win,
+		mlx_st->img_player.img, x * 32, y * 32);
+}
 
 void	send_error(int line, int point, int action)
 {

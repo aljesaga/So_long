@@ -2,7 +2,8 @@ NAME = so_long
 
 SRC = so_long.c ./maping/prints.c ./maping/analysis.c \
 	ipu.c ./keys_move/wasd.c ./gnl/get_next_line.c \
-	./gnl/get_next_line_utils.c 
+	./gnl/get_next_line_utils.c ./keys_move/hooks.c \
+	./keys_move/wasd.c ft_free.c
 
 OBJS = $(SRC:%.c=%.o)
 
