@@ -6,7 +6,7 @@
 /*   By: alsanche <alsanche@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 12:25:42 by alsanche          #+#    #+#             */
-/*   Updated: 2022/03/17 15:55:34 by alsanche         ###   ########lyon.fr   */
+/*   Updated: 2022/03/24 19:50:08 by alsanche         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	call_of_hooks(int key, t_mlx_need *mlx_st)
 	}
 	else
 		return (0);
+	mlx_st->moves += 1;
+	printf("Moves : %d\n", mlx_st->moves);
 	return (1);
 }
 

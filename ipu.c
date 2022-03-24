@@ -6,7 +6,7 @@
 /*   By: alsanche <alsanche@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 16:56:13 by alsanche          #+#    #+#             */
-/*   Updated: 2022/03/17 12:19:38 by alsanche         ###   ########lyon.fr   */
+/*   Updated: 2022/03/24 19:47:22 by alsanche         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	ft_charge_arts(t_mlx_need *mlx_a)
 	mlx_a->img_player = ft_new_sprite(mlx_a->mlx, "./arts/player.xmp");
 	mlx_a->img_coll = ft_new_sprite(mlx_a->mlx, "./arts/colection.xmp");
 	mlx_a->img_exit = ft_new_sprite(mlx_a->mlx, "./arts/exit.xmp");
+	mlx_a->moves = 0;
 }
 
 void	ft_put_pec(t_mlx_need *mlx_st, int y, int x, char c)

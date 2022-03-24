@@ -6,7 +6,7 @@
 /*   By: alsanche <alsanche@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 17:38:23 by alsanche          #+#    #+#             */
-/*   Updated: 2022/03/17 15:34:10 by alsanche         ###   ########lyon.fr   */
+/*   Updated: 2022/03/24 19:47:44 by alsanche         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,7 @@ typedef struct s_mlx_need
 	t_img			img_back;
 	t_img			img_exit;
 	t_img			img_coll;
-	int				all_points;
-	int				points;
+	int				moves;
 	t_game_struct	*map;
 
 }	t_mlx_need;
