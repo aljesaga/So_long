@@ -6,7 +6,7 @@
 /*   By: alsanche <alsanche@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 16:24:37 by alsanche          #+#    #+#             */
-/*   Updated: 2022/03/16 19:07:27 by alsanche         ###   ########lyon.fr   */
+/*   Updated: 2022/04/02 13:50:43 by alsanche         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	plus_values(int x, int y, char k, t_game_struct *map)
 		map->player = 0;
 		map->exit = 0;
 		map->all_points = 0;
+		map->points = 0;
 	}
 	if (k == 'P')
 	{

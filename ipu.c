@@ -6,7 +6,7 @@
 /*   By: alsanche <alsanche@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 16:56:13 by alsanche          #+#    #+#             */
-/*   Updated: 2022/03/24 19:47:22 by alsanche         ###   ########lyon.fr   */
+/*   Updated: 2022/04/02 14:34:26 by alsanche         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ t_img	ft_new_sprite(void *mlx, char *route)
 
 void	ft_charge_arts(t_mlx_need *mlx_a)
 {
-	mlx_a->img_back = ft_new_sprite(mlx_a->mlx, "./arts/flor.xmp");
+	mlx_a->img_back = ft_new_sprite(mlx_a->mlx, "./arts/flor.xpm");
 	mlx_a->img_wall = ft_new_sprite(mlx_a->mlx, "./arts/wall.xmp");
-	mlx_a->img_player = ft_new_sprite(mlx_a->mlx, "./arts/player.xmp");
-	mlx_a->img_coll = ft_new_sprite(mlx_a->mlx, "./arts/colection.xmp");
+	mlx_a->img_player = ft_new_sprite(mlx_a->mlx, "./arts/player.xpm");
+	mlx_a->img_coll = ft_new_sprite(mlx_a->mlx, "./arts/colection.xpm");
 	mlx_a->img_exit = ft_new_sprite(mlx_a->mlx, "./arts/exit.xmp");
 	mlx_a->moves = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: alsanche <alsanche@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 17:38:23 by alsanche          #+#    #+#             */
-/*   Updated: 2022/03/24 19:47:44 by alsanche         ###   ########lyon.fr   */
+/*   Updated: 2022/04/02 14:23:32 by alsanche         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,6 @@ typedef struct s_mlx_need
 	t_game_struct	*map;
 
 }	t_mlx_need;
-
-/* Keys_code */
-/*
-	W = 13
-	S = 1
-	A = 0
-	D = 2
-	R = 15
-	esc = 53
-*/
 
 /* so_long */
 

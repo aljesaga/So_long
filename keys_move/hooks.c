@@ -6,7 +6,7 @@
 /*   By: alsanche <alsanche@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 12:25:42 by alsanche          #+#    #+#             */
-/*   Updated: 2022/03/24 19:50:08 by alsanche         ###   ########lyon.fr   */
+/*   Updated: 2022/04/02 14:37:50 by alsanche         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,35 +16,30 @@ int	call_of_hooks(int key, t_mlx_need *mlx_st)
 {
 	int	tof;
 
-	if (key == 0)
-		a_key(mlx_st);
-	else if (key == 1)
-		s_key(mlx_st);
-	else if (key == 2)
-		d_key(mlx_st);
-	else if (key == 13)
-		w_key(mlx_st);
+	tof = 0;
+	if (key == 0 || key == 123)
+		tof = a_key(mlx_st);
+	else if (key == 1 || key == 125)
+		tof = s_key(mlx_st);
+	else if (key == 2 || key == 124)
+		tof = d_key(mlx_st);
+	else if (key == 13 || key == 126)
+		tof = w_key(mlx_st);
 	else if (key == 53)
 	{
 		mlx_destroy_window(mlx_st->mlx, mlx_st->mlx_win);
 		exit (0);
 	}
-	else
-		return (0);
-	mlx_st->moves += 1;
-	printf("Moves : %d\n", mlx_st->moves);
-	return (1);
+	if (tof == 1)
+	{
+		mlx_st->moves += 1;
+		printf("Moves : %d\n", mlx_st->moves);
+	}
+	return (tof);
 }
 
 void	what_if(t_mlx_need *mlx_st)
 {
-	int	move;
-
-	move = 0;
-	if (mlx_key_hook(mlx_st->mlx_win, call_of_hooks, mlx_st) == 1)
-	{
-		move++;
-		printf("move n%d", move);
-	}
+	mlx_key_hook(mlx_st->mlx_win, call_of_hooks, mlx_st);
 	mlx_hook(mlx_st->mlx_win, 17, 1L < 17, ft_end_game, mlx_st);
 }

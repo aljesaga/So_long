@@ -6,7 +6,7 @@
 /*   By: alsanche <alsanche@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 14:50:25 by alsanche          #+#    #+#             */
-/*   Updated: 2022/03/17 15:26:51 by alsanche         ###   ########lyon.fr   */
+/*   Updated: 2022/04/02 12:09:41 by alsanche         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void	ft_free_mlx(t_mlx_need *mlx_st)
 {
 	mlx_st->mlx = NULL;
 	mlx_st->mlx_win = NULL;
-	mlx_st->all_points = 0;
-	mlx_st->points = 0;
 	ft_free_img(mlx_st->img_player);
 	ft_free_img(mlx_st->img_wall);
 	ft_free_img(mlx_st->img_back);
