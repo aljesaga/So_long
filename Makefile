@@ -19,7 +19,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C ../Libft
-	$(CC) $^ -o $@ $(CFLAGS) $(DFLAGS) ../Libft/libft.a $(MLBFLAGS)
+	$(CC) $^ -o $@ $(CFLAGS) ../Libft/libft.a $(MLBFLAGS)
 
 clean:
 	make fclean -sC ../Libft

@@ -6,7 +6,7 @@
 /*   By: alsanche <alsanche@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 17:38:23 by alsanche          #+#    #+#             */
-/*   Updated: 2022/04/02 14:23:32 by alsanche         ###   ########lyon.fr   */
+/*   Updated: 2022/04/03 13:22:17 by alsanche         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ typedef struct s_mlx_need
 
 /* so_long */
 
-void	load_map(int fd, t_game_struct *map, t_mlx_need *mlx_all);
+void	load_map(t_game_struct *map, t_mlx_need *mlx_all);
 int		main(int arc, char **arv);
 
 /* ipu */
