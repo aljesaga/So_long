@@ -6,7 +6,7 @@
 /*   By: alsanche <alsanche@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 16:22:24 by alsanche          #+#    #+#             */
-/*   Updated: 2022/04/03 13:55:05 by alsanche         ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 17:24:16 by alsanche         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	load_map(t_game_struct *map_o, t_mlx_need *mlx_st)
 	}
 	mlx_st->mlx = mlx_init();
 	mlx_st->mlx_win = mlx_new_window(mlx_st->mlx, (map_o->width * 32 + 32),
-			(map_o->high * 32 + 32), "SO_LONG");
+			(map_o->high * 32), "SO_LONG");
 	ft_charge_arts(mlx_st);
 	ft_add_arts(mlx_st, map_o);
 	mlx_st->map = map_o;

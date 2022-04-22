@@ -6,7 +6,7 @@
 /*   By: alsanche <alsanche@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:42:04 by alsanche          #+#    #+#             */
-/*   Updated: 2022/04/02 13:45:07 by alsanche         ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 15:18:37 by alsanche         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,6 @@ int	height(char *arv)
 		str = get_next_line(fd);
 	}
 	close(fd);
+	printf("%d\n", end);
 	return (end);
 }
