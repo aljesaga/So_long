@@ -6,7 +6,7 @@
 #    By: alsanche <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/22 13:00:39 by alsanche          #+#    #+#              #
-#    Updated: 2022/04/22 13:00:42 by alsanche         ###   ########.fr        #
+#    Updated: 2022/04/22 13:24:05 by alsanche         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,15 +30,15 @@ WFLAGS = -Wall -Wextra -Werror -g3
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	make -C ../Libft
-	$(CC) $^ -o $@ $(CFLAGS) ../Libft/libft.a $(MLBFLAGS)
+	make -C ./Libft
+	$(CC) $^ -o $@ $(CFLAGS) ./Libft/libft.a $(MLBFLAGS)
 
 clean:
-	make clean -sC ../Libft
+	make clean -sC ./Libft
 	rm -rf $(OBJS)
 
 fclean:
-	make fclean -sC ../Libft
+	make fclean -sC ./Libft
 	rm -f $(NAME)
 
 re: fclean all
