@@ -6,14 +6,14 @@
 /*   By: alsanche <alsanche@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 17:38:23 by alsanche          #+#    #+#             */
-/*   Updated: 2022/04/03 13:22:17 by alsanche         ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 12:49:43 by alsanche         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../Libft/libft.h"
+# include "Libft/libft.h"
 # include "./gnl/get_next_line.h"
 # include <mlx.h>
 # include <sys/types.h>

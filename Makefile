@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: alsanche <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/04/22 13:00:39 by alsanche          #+#    #+#              #
+#    Updated: 2022/04/22 13:00:42 by alsanche         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = so_long
 
 SRC = so_long.c ./maping/prints.c ./maping/analysis.c \
@@ -22,10 +34,11 @@ $(NAME): $(OBJS)
 	$(CC) $^ -o $@ $(CFLAGS) ../Libft/libft.a $(MLBFLAGS)
 
 clean:
-	make fclean -sC ../Libft
+	make clean -sC ../Libft
 	rm -rf $(OBJS)
 
-fclean: 
+fclean:
+	make fclean -sC ../Libft
 	rm -f $(NAME)
 
 re: fclean all
